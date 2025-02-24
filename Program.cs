@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace FizzBuzz
+﻿namespace FizzBuzz
 {
     class Program 
     {
@@ -32,7 +29,7 @@ namespace FizzBuzz
                     }
                     if (counter % 17 == 0)
                     {
-                        output = SplitString(output);
+                        output = "Need to reverse array";
                     }
                     if (output.Length > 0)
                     {
@@ -44,29 +41,5 @@ namespace FizzBuzz
                     }
                 }
             }
-        public static string SplitString(string output)
-        {
-            int numberOfWords = (output.Length + 1) / 4;
-            string[] outputArray = new string[numberOfWords];
-
-            for (var index = 1; index <= output.Length; index++)
-            {
-                if (index % 4 == 0)
-                {
-                    string outputSubString = output.Substring(index - 4, 3);
-                    outputArray[index-4] = outputSubString;
-                    Console.WriteLine("Output so far ",outputArray, "end \n");
-                }
-            }
-            Array.Reverse(outputArray);
-            string reversedOutput = JoinArray(outputArray);
-            return reversedOutput;
-        }
-
-        public static string JoinArray(string[] outputArray)
-        {
-            string output = string.Join("", outputArray);
-            return output;
-        }
     }
 }
