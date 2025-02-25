@@ -44,7 +44,7 @@
         public static bool RemainderZero(int counter, int divisor)
         {
             if (counter % divisor == 0)
-            return true;
+                return true;
             else 
             {
                 return false;
@@ -55,7 +55,6 @@
             if (divisor == 11)
             {
                 outputArray[0] = "Bong";
-                return outputArray;
             }
             if (divisor == 3)
             {
