@@ -6,14 +6,14 @@
             {
                 for(int counter = 1; counter <= 255; counter++)
                 {
-                    string[] outputArray = new string[5];
+                    List<string> outputArray = [];
                     int[] divisors = {3, 5, 7, 11, 13, 17};
 
                     foreach (int divisor in divisors)
                     {
-                        if (RemainderZero(counter, divisor))
+                        if (counter % divisor == 0)
                         {
-                            outputArray = CreateArray(outputArray, divisor);
+                            outputArray = populateArray(outputArray, divisor);
                         }
                     }
                     if (outputArray.Contains("Bong"))
@@ -31,7 +31,7 @@
                 }
             }
         
-        public static bool IsNotNullArray(string[] outputArray)
+        public static bool IsNotNullArray(List<string> outputArray)
         {
             foreach (var element in outputArray)
             {
@@ -41,40 +41,31 @@
             return false;
         }
         
-        public static bool RemainderZero(int counter, int divisor)
-        {
-            if (counter % divisor == 0)
-                return true;
-            else 
-            {
-                return false;
-            }
-        }
-        public static string[] CreateArray(string[] outputArray, int divisor)
+        public static List<string> populateArray(List<string> outputArray, int divisor)
         {
             if (divisor == 11)
             {
-                outputArray[0] = "Bong";
+                outputArray.Add("Bong");
             }
             if (divisor == 3)
             {
-                outputArray[1] = "Fizz";
+                outputArray.Add("Fizz");
             }
             if (divisor == 13)
             {
-                outputArray[2] = "Fezz"; 
+                outputArray.Add("Fezz"); 
             }
             if (divisor == 5)
             {
-                outputArray[3] = "Buzz";
+                outputArray.Add("Buzz");
             }
             if (divisor == 7)
             {
-                outputArray[4] = "Bang";
+                outputArray.Add("Bang");
             }
             if (divisor == 17)
             {
-                Array.Reverse(outputArray);
+                outputArray.Reverse();
             }
         return outputArray;
         }
