@@ -4,42 +4,70 @@
     {
         static void Main(string[] args)
             {
-                for(int counter = 1; counter <= 195; counter++)
+                for(int counter = 1; counter <= 255; counter++)
                 {
-                    string output = "";
-                    if (counter % 13 == 0)
+                    List<string> outputArray = [];
+                    int[] divisors = {3, 5, 7, 11, 13, 17};
+
+                    foreach (int divisor in divisors)
                     {
-                        output += "Fezz"; 
+                        if (counter % divisor == 0)
+                        {
+                            outputArray = populateArray(outputArray, divisor);
+                        }
                     }
-                    if (counter % 3 == 0)
+                    if (outputArray.Contains("Bong"))
                     {
-                        output = "Fizz" + output;
+                        Console.WriteLine($"{counter} Bong ");
                     }
-                    if (counter % 5 == 0)
+                    else if (IsNotNullArray(outputArray)) 
                     {
-                        output += "Buzz";
-                    }
-                    if (counter % 7 == 0)
-                    {
-                        output += "Bang";
-                    }
-                    if (counter % 11 == 0)
-                    {
-                        output = "Bong";
-                    }
-                    if (counter % 17 == 0)
-                    {
-                        output = "Need to reverse array";
-                    }
-                    if (output.Length > 0)
-                    {
-                        Console.Write($"{output} ");
+                        Console.WriteLine($"{counter} {String.Join("", outputArray)} ");
                     }
                     else 
                     {
-                        Console.Write($"{counter} ");
+                        Console.WriteLine($"{counter} ");
                     }
                 }
             }
+        
+        public static bool IsNotNullArray(List<string> outputArray)
+        {
+            foreach (var element in outputArray)
+            {
+                if (element != null)
+                    return true;
+            }
+            return false;
+        }
+        
+        public static List<string> populateArray(List<string> outputArray, int divisor)
+        {
+            if (divisor == 11)
+            {
+                outputArray.Add("Bong");
+            }
+            if (divisor == 3)
+            {
+                outputArray.Add("Fizz");
+            }
+            if (divisor == 13)
+            {
+                outputArray.Add("Fezz"); 
+            }
+            if (divisor == 5)
+            {
+                outputArray.Add("Buzz");
+            }
+            if (divisor == 7)
+            {
+                outputArray.Add("Bang");
+            }
+            if (divisor == 17)
+            {
+                outputArray.Reverse();
+            }
+        return outputArray;
+        }
     }
 }
